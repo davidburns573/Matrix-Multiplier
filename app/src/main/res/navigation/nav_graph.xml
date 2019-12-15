@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/dimensionsFragment">
+
+    <fragment
+        android:id="@+id/dimensionsFragment"
+        android:name="com.example.matrixmultiplier.DimensionsFragment"
+        android:label="dimensions_fragment"
+        tools:layout="@layout/dimensions_fragment" >
+        <action
+            android:id="@+id/action_dimensionsFragment_to_inputValuesFragment"
+            app:destination="@id/inputValuesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/inputValuesFragment"
+        android:name="com.example.matrixmultiplier.InputValuesFragment"
+        android:label="input_values_fragment"
+        tools:layout="@layout/input_values_fragment" />
+</navigation>

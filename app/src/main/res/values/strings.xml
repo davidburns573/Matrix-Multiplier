@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Matrix Multiplier</string>
+    <string name="button_rows">Enter Number of Rows!</string>
+    <string name="button_cols">Enter Number of Columns!</string>
+    <string name="please_enter_matrix_values">Please Enter the Matrix Values:</string>
+    <string name="enterA">Enter Dimensions for Matrix A</string>
+    <string name="enterB">Enter Dimensions for Matrix B</string>
+    <string name="welcome_to_the_matrix_multiplier">Welcome to the Matrix\nMultiplier!</string>
+    <string name="number_of_rows">Number of Rows:</string>
+    <string name="up_arrow">△</string>
+    <string name="down_arrow">▽</string>
+    <string name="number_of_columns">Number of Columns:</string>
+    <string name="_1">1</string>
+    <string name="enter_values">Enter Values</string>
+    <string name="A_times_B_header">A * B =</string>
+    <string name="restart">Restart</string>
+</resources>
