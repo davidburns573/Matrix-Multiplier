@@ -1,5 +1,6 @@
 package com.example.matrixmultiplier;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,14 +11,17 @@ import android.widget.LinearLayout;
 
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
+
+import java.util.HashMap;
 
 public class DimensionsFragment extends Fragment {
 
-    private String type;
     private int numRows;
     private int numCols;
+    private HashMap<Character, double[][]> matrices;
+    HashMap<Integer, String> characterHashMap;
+    private String type;
 
     private Button btnEnterDimensions;
     private Button btnRowUpArrow;
@@ -27,18 +31,18 @@ public class DimensionsFragment extends Fragment {
     private EditText etNumberRows;
     private EditText etNumberCols;
     private DialogFragment dialog;
-    private LinearLayout layout;
-
-    public DimensionsFragment(String type) {
-        this.type = type;
-        numRows = 1;
-        numCols = 1;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Intent i = getActivity().getIntent();
+        matrices = (HashMap<Character, double[][]>) i.getSerializableExtra("matrices");
+        numCols = 1;
+        numRows = 1;
+        characterHashMap = new HashMap<>();
+        initializeCharacterHashMap();
+        type = characterHashMap.get(matrices.size());
     }
 
     @Override
@@ -52,7 +56,6 @@ public class DimensionsFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        layout = view.findViewById(R.id.dimensions_fragment);
 
         btnEnterDimensions = view.findViewById(R.id.btnEnterDimensions);
         btnRowUpArrow = view.findViewById(R.id.btnRowUpArrow);
@@ -62,8 +65,19 @@ public class DimensionsFragment extends Fragment {
         etNumberRows = view.findViewById(R.id.etNumberRows);
         etNumberCols = view.findViewById(R.id.etNumberCols);
 
+        btnEnterDimensions.setText("Enter Dimensions for Matrix " + type);
+
         btnRowDownArrow.setEnabled(false);
         btnColDownArrow.setEnabled(false);
+
+        int size = matrices.size();
+        if (size > 0) {
+            btnRowUpArrow.setEnabled(false);
+            char c = characterHashMap.get(size - 1).charAt(0);
+            double[][] lastMatrix = matrices.get(c);
+            etNumberRows.setText(Integer.toString(lastMatrix[0].length));
+            etNumberRows.setEnabled(false);
+        }
 
         btnRowUpArrow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,16 +145,31 @@ public class DimensionsFragment extends Fragment {
                     return;
                 }
 
-                NavDirections action =
-                        DimensionsFragmentDirections
-                                .actionDimensionsFragmentToInputValuesFragment();
-                Navigation.findNavController(view).navigate(action);
+                String type = characterHashMap.get(matrices.size());
+                Bundle bundle = new Bundle();
+                bundle.putInt("numRows", numRows);
+                bundle.putInt("numCols", numCols);
+                bundle.putString("type", type);
+
+//                NavDirections action =
+//                        DimensionsFragmentDirections
+//                                .actionDimensionsFragmentToInputValuesFragment();
+                Navigation.findNavController(view).
+                        navigate(R.id.action_dimensionsFragment_to_inputValuesFragment, bundle);
             }
         });
     }
 
-    public String getType() {
-        return type;
+    private void initializeCharacterHashMap() {
+        characterHashMap.put(0,"A");
+        characterHashMap.put(1,"B");
+        characterHashMap.put(2,"C");
+        characterHashMap.put(3,"D");
+        characterHashMap.put(4,"E");
+        characterHashMap.put(5,"F");
+        characterHashMap.put(6,"G");
+        characterHashMap.put(7,"H");
+        characterHashMap.put(8,"I");
     }
 
     public int getNumRows() {

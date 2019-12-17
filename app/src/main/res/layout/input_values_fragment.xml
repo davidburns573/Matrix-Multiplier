@@ -20,17 +20,47 @@
         android:textSize="20sp"
         android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/btnEnterValues"
+    <HorizontalScrollView
+        android:id="@+id/horizontal_scroll_view_matrix"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
-        android:background="@drawable/round_button"
-        android:fontFamily="serif-monospace"
-        android:text="@string/enter_values"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        android:textStyle="bold"/>
+        android:fillViewport="true"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/btnEnterValues"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/round_button"
+            android:fontFamily="serif-monospace"
+            android:text="@string/enter_values"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/btnCalculate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/round_button"
+            android:fontFamily="serif-monospace"
+            android:text="@string/calculate"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:visibility="gone"/>
+    </LinearLayout>
 </LinearLayout>

@@ -12,11 +12,41 @@
         tools:layout="@layout/dimensions_fragment" >
         <action
             android:id="@+id/action_dimensionsFragment_to_inputValuesFragment"
-            app:destination="@id/inputValuesFragment" />
+            app:destination="@id/inputValuesFragment"
+            app:enterAnim="@anim/nav_default_pop_enter_anim" />
     </fragment>
     <fragment
         android:id="@+id/inputValuesFragment"
         android:name="com.example.matrixmultiplier.InputValuesFragment"
         android:label="input_values_fragment"
-        tools:layout="@layout/input_values_fragment" />
+        tools:layout="@layout/input_values_fragment" >
+        <action
+            android:id="@+id/action_inputValuesFragment_to_dimensionsFragment"
+            app:destination="@id/dimensionsFragment"
+            app:enterAnim="@anim/nav_default_pop_enter_anim" />
+        <argument
+            android:name="numRows"
+            app:argType="integer"
+            android:defaultValue="1" />
+        <argument
+            android:name="numCols"
+            app:argType="integer"
+            android:defaultValue="1" />
+        <action
+            android:id="@+id/action_inputValuesFragment_to_displayFinalMatrixFragment"
+            app:destination="@+id/displayFinalMatrixFragment"
+            app:enterAnim="@anim/nav_default_pop_enter_anim" />
+        <argument
+            android:name="type"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/displayFinalMatrixFragment"
+        android:name="com.example.matrixmultiplier.DisplayFinalMatrixFragment"
+        android:label="display_final_matrix_fragment"
+        tools:layout="@layout/display_final_matrix_fragment" >
+        <action
+            android:id="@+id/action_displayFinalMatrixFragment_to_dimensionsFragment"
+            app:destination="@id/dimensionsFragment" />
+    </fragment>
 </navigation>

@@ -14,4 +14,6 @@
     <string name="enter_values">Enter Values</string>
     <string name="A_times_B_header">A * B =</string>
     <string name="restart">Restart</string>
+    <string name="calculate">Calculate</string>
+    <string name="add_another_matrix">Add Matrix</string>
 </resources>
