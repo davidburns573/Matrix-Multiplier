@@ -68,7 +68,7 @@ public class DisplayFinalMatrixFragment extends Fragment {
 
         int width = 350;
         for (int i = 0; i < highestDigits - NUM_DIGITS; i++) {
-            width += 45;
+            width += 40;
         }
         for (int i = 0; i < matrixDisplay.length; i++) {
             for (int j = 0; j < matrixDisplay[0].length; j++) {
